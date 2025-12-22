@@ -7,8 +7,8 @@ const Home = () => {
         <a href="/login" className="bg-white text-slate-700 px-4 py-2 rounded hover:bg-gray-100 font-medium">
           Log In
         </a>
-        <a href="/signup" className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 font-medium">
-          Sign Up
+        <a href="/register" className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 font-medium">
+          Register
         </a>
       </div>
       <div className="container mx-auto px-4">

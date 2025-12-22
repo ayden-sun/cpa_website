@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Schedules from './components/Schedules';
-import Knowledge from './components/Knowledge';
-import Register from './components/Register';
+import About from './components/About';
+import Contact from './components/Contact';
 import Login from './components/Login';
-import Signup from './components/Signup';
+import Register from './components/Signup';
 import Dashboard from './components/Dashboard';
 import AdminDashboard from './components/AdminDashboard';
 
@@ -21,10 +21,10 @@ function App() {
                   <div className="flex justify-between items-center">
                     <h1 className="text-2xl font-bold">CPA Webinar Platform</h1>
                     <div className="space-x-6">
-                      <a href="#home" className="hover:text-teal-300 transition-colors">Home</a>
-                      <a href="#schedules" className="hover:text-teal-300 transition-colors">Schedules</a>
-                      <a href="#knowledge" className="hover:text-teal-300 transition-colors">CPA Knowledge</a>
-                      <a href="#register" className="hover:text-teal-300 transition-colors">Register</a>
+                      <a href="/#home" className="hover:text-teal-300 transition-colors">Home</a>
+                      <a href="/#schedules" className="hover:text-teal-300 transition-colors">Schedules</a>
+                      <a href="/about" className="hover:text-teal-300 transition-colors">About</a>
+                      <a href="/contact" className="hover:text-teal-300 transition-colors">Contact</a>
                     </div>
                   </div>
                 </div>
@@ -32,8 +32,6 @@ function App() {
 
               <Home />
               <Schedules />
-              <Knowledge />
-              <Register />
 
               <footer className="bg-gray-800 text-white py-8">
                 <div className="container mx-auto px-4 text-center">
@@ -42,8 +40,10 @@ function App() {
               </footer>
             </>
           } />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
