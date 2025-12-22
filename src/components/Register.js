@@ -20,7 +20,7 @@ const Register = () => {
   };
 
   return (
-    <section id="register" className="py-20 bg-gray-100">
+    <section id="register" className="py-20 bg-slate-50">
       <div className="container mx-auto px-4 max-w-2xl">
         <h2 className="text-4xl font-bold text-center mb-12">Register for a Webinar</h2>
         <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">

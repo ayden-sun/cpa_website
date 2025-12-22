@@ -16,15 +16,15 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <nav className="bg-blue-600 text-white shadow-lg">
+              <nav className="bg-slate-800 text-white shadow-lg">
                 <div className="container mx-auto px-4 py-4">
                   <div className="flex justify-between items-center">
                     <h1 className="text-2xl font-bold">CPA Webinar Platform</h1>
                     <div className="space-x-6">
-                      <a href="#home" className="hover:text-blue-200 transition-colors">Home</a>
-                      <a href="#schedules" className="hover:text-blue-200 transition-colors">Schedules</a>
-                      <a href="#knowledge" className="hover:text-blue-200 transition-colors">CPA Knowledge</a>
-                      <a href="#register" className="hover:text-blue-200 transition-colors">Register</a>
+                      <a href="#home" className="hover:text-teal-300 transition-colors">Home</a>
+                      <a href="#schedules" className="hover:text-teal-300 transition-colors">Schedules</a>
+                      <a href="#knowledge" className="hover:text-teal-300 transition-colors">CPA Knowledge</a>
+                      <a href="#register" className="hover:text-teal-300 transition-colors">Register</a>
                     </div>
                   </div>
                 </div>

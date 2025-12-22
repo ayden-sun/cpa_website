@@ -2,12 +2,12 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <section id="home" className="py-20 bg-gradient-to-r from-blue-500 to-purple-600 text-white relative">
+    <section id="home" className="py-20 bg-gradient-to-r from-slate-800 to-slate-900 text-white relative">
       <div className="absolute top-4 right-4 space-x-4">
-        <a href="/login" className="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-100">
+        <a href="/login" className="bg-white text-slate-700 px-4 py-2 rounded hover:bg-gray-100 font-medium">
           Log In
         </a>
-        <a href="/signup" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+        <a href="/signup" className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 font-medium">
           Sign Up
         </a>
       </div>
