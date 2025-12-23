@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
+    emailOrUsername: '',
     password: '',
   });
   const navigate = useNavigate();
@@ -20,17 +20,22 @@ const Login = () => {
     // For demo, simulate login
     // In real app, call API
 
-    // Check for demo account
-    if (formData.email === 'admin' && formData.password === '1234') {
+    // Check for demo account (works with username or email)
+    if ((formData.emailOrUsername === 'admin' || formData.emailOrUsername === 'admin@demo.com') && formData.password === '1234') {
       const user = { id: 1, email: 'admin@demo.com', role: 'admin', name: 'Demo Admin' };
       localStorage.setItem('user', JSON.stringify(user));
       navigate('/admin');
       return;
     }
 
-    // Regular login logic
-    const role = formData.email.includes('admin') ? 'admin' : 'user';
-    const user = { id: 1, email: formData.email, role: role };
+    // Regular login logic - check if it's an email or username
+    const isEmail = formData.emailOrUsername.includes('@');
+    const role = isEmail && formData.emailOrUsername.includes('admin') ? 'admin' : 'user';
+    const user = {
+      id: 1,
+      email: isEmail ? formData.emailOrUsername : `${formData.emailOrUsername}@demo.com`,
+      role: role
+    };
     localStorage.setItem('user', JSON.stringify(user));
     navigate(role === 'admin' ? '/admin' : '/dashboard');
   };
@@ -65,17 +70,17 @@ const Login = () => {
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email" className="sr-only">
-                  Email address
+                <label htmlFor="emailOrUsername" className="sr-only">
+                  Email or Username
                 </label>
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
+                  id="emailOrUsername"
+                  name="emailOrUsername"
+                  type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-slate-300 placeholder-slate-500 text-slate-900 rounded-t-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
-                  value={formData.email}
+                  placeholder="Email or Username"
+                  value={formData.emailOrUsername}
                   onChange={handleChange}
                 />
               </div>
