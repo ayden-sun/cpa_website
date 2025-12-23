@@ -23,14 +23,7 @@ const Header = () => {
               Contact
             </Link>
           </nav>
-          <div className="flex space-x-4">
-            <Link to="/login" className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 transition-colors font-medium">
-              Log In
-            </Link>
-            <Link to="/register" className="bg-slate-600 text-white px-4 py-2 rounded hover:bg-slate-700 transition-colors font-medium">
-              Register
-            </Link>
-          </div>
+
         </div>
 
         {/* Mobile menu button - for future enhancement */}
