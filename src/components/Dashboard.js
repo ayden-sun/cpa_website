@@ -5,6 +5,16 @@ const Dashboard = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  const formatTimeRange = (startTime, duration) => {
+    const [time, period] = startTime.split(' ');
+    const [hours, minutes] = time.split(':').map(Number);
+    const startHour = period === 'PM' && hours !== 12 ? hours + 12 : hours === 12 && period === 'AM' ? 0 : hours;
+    const endHour = startHour + duration;
+    const endHour12 = endHour > 12 ? endHour - 12 : endHour === 0 ? 12 : endHour;
+    const endPeriod = endHour >= 12 ? 'PM' : 'AM';
+    return `${startTime} - ${endHour12}:${minutes.toString().padStart(2, '0')} ${endPeriod} EST`;
+  };
+
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -77,7 +87,7 @@ const Dashboard = () => {
                     January 15, 2025
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    2:00 PM EST
+                    {formatTimeRange('2:00 PM', 2)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
@@ -98,7 +108,7 @@ const Dashboard = () => {
                     February 10, 2025
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    3:00 PM EST
+                    {formatTimeRange('3:00 PM', 2.5)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
@@ -147,7 +157,7 @@ const Dashboard = () => {
                     March 5, 2025
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    1:00 PM EST
+                    {formatTimeRange('1:00 PM', 2)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     2 hours
@@ -169,7 +179,7 @@ const Dashboard = () => {
                     April 12, 2025
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    10:00 AM EST
+                    {formatTimeRange('10:00 AM', 1.5)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     1.5 hours

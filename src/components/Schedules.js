@@ -5,19 +5,32 @@ const Schedules = () => {
     {
       title: 'Introduction to CPA',
       date: 'January 15, 2025',
-      time: '2:00 PM EST',
+      startTime: '2:00 PM',
+      duration: 2,
     },
     {
       title: 'Advanced Tax Strategies',
       date: 'February 10, 2025',
-      time: '3:00 PM EST',
+      startTime: '3:00 PM',
+      duration: 2.5,
     },
     {
       title: 'Financial Planning Basics',
       date: 'March 5, 2025',
-      time: '1:00 PM EST',
+      startTime: '1:00 PM',
+      duration: 2,
     },
   ];
+
+  const formatTimeRange = (startTime, duration) => {
+    const [time, period] = startTime.split(' ');
+    const [hours, minutes] = time.split(':').map(Number);
+    const startHour = period === 'PM' && hours !== 12 ? hours + 12 : hours === 12 && period === 'AM' ? 0 : hours;
+    const endHour = startHour + duration;
+    const endHour12 = endHour > 12 ? endHour - 12 : endHour === 0 ? 12 : endHour;
+    const endPeriod = endHour >= 12 ? 'PM' : 'AM';
+    return `${startTime} - ${endHour12}:${minutes.toString().padStart(2, '0')} ${endPeriod} EST`;
+  };
 
   return (
     <section id="schedules" className="py-20 bg-slate-50">
@@ -55,7 +68,7 @@ const Schedules = () => {
                       {webinar.date}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">
-                      {webinar.time}
+                      {formatTimeRange(webinar.startTime, webinar.duration)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">

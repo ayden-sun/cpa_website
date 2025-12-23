@@ -17,10 +17,13 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // For demo, simulate login
-    // In real app, call API
+    // For demo, simulate login with database check
+    // In real app, this would call API
 
-    // Check for demo account (works with username or email)
+    // Get users from localStorage (simulating database)
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+    // Check for demo admin account
     if ((formData.emailOrUsername === 'admin' || formData.emailOrUsername === 'admin@demo.com') && formData.password === '1234') {
       const user = { id: 1, email: 'admin@demo.com', role: 'admin', name: 'Demo Admin' };
       localStorage.setItem('user', JSON.stringify(user));
@@ -28,16 +31,25 @@ const Login = () => {
       return;
     }
 
-    // Regular login logic - check if it's an email or username
-    const isEmail = formData.emailOrUsername.includes('@');
-    const role = isEmail && formData.emailOrUsername.includes('admin') ? 'admin' : 'user';
-    const user = {
-      id: 1,
-      email: isEmail ? formData.emailOrUsername : `${formData.emailOrUsername}@demo.com`,
-      role: role
-    };
-    localStorage.setItem('user', JSON.stringify(user));
-    navigate(role === 'admin' ? '/admin' : '/dashboard');
+    // Find user in database by email or username
+    const user = users.find(u =>
+      (u.email === formData.emailOrUsername || u.username === formData.emailOrUsername) &&
+      u.password === formData.password
+    );
+
+    if (user) {
+      // Set current user session
+      localStorage.setItem('user', JSON.stringify({
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        role: user.role
+      }));
+      navigate(user.role === 'admin' ? '/admin' : '/dashboard');
+    } else {
+      alert('Invalid credentials. Please try again.');
+    }
   };
 
   return (

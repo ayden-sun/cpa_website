@@ -5,6 +5,16 @@ const AdminDashboard = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  const formatTimeRange = (startTime, duration) => {
+    const [time, period] = startTime.split(' ');
+    const [hours, minutes] = time.split(':').map(Number);
+    const startHour = period === 'PM' && hours !== 12 ? hours + 12 : hours === 12 && period === 'AM' ? 0 : hours;
+    const endHour = startHour + duration;
+    const endHour12 = endHour > 12 ? endHour - 12 : endHour === 0 ? 12 : endHour;
+    const endPeriod = endHour >= 12 ? 'PM' : 'AM';
+    return `${startTime} - ${endHour12}:${minutes.toString().padStart(2, '0')} ${endPeriod} EST`;
+  };
+
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -120,7 +130,7 @@ const AdminDashboard = () => {
                     Jan 15, 2025
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    2:00 PM EST
+                    {formatTimeRange('2:00 PM', 2)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     2 hours
@@ -147,7 +157,7 @@ const AdminDashboard = () => {
                     Feb 10, 2025
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    3:00 PM EST
+                    {formatTimeRange('3:00 PM', 2.5)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     2.5 hours
@@ -174,7 +184,7 @@ const AdminDashboard = () => {
                     Mar 5, 2025
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    1:00 PM EST
+                    {formatTimeRange('1:00 PM', 2)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     2 hours
@@ -201,7 +211,7 @@ const AdminDashboard = () => {
                     Apr 12, 2025
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    10:00 AM EST
+                    {formatTimeRange('10:00 AM', 1.5)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     1.5 hours
@@ -228,7 +238,7 @@ const AdminDashboard = () => {
                     May 8, 2025
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    9:00 AM EST
+                    {formatTimeRange('9:00 AM', 3)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     3 hours

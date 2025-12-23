@@ -19,10 +19,34 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // For demo, simulate signup
-    // In real app, call API
-    const user = { id: Date.now(), name: formData.name, email: formData.email, role: 'user' };
-    localStorage.setItem('user', JSON.stringify(user));
+    // For demo, simulate signup with database storage
+    // In real app, this would call API to save to database
+
+    // Simulate user creation with password hashing (in real app, hash on server)
+    const user = {
+      id: Date.now(),
+      name: formData.name,
+      username: formData.username,
+      email: formData.email,
+      password: formData.password, // In real app, this would be hashed
+      role: 'user',
+      created_at: new Date().toISOString()
+    };
+
+    // Store user in localStorage (simulating database)
+    const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+    existingUsers.push(user);
+    localStorage.setItem('users', JSON.stringify(existingUsers));
+
+    // Set current user session
+    localStorage.setItem('user', JSON.stringify({
+      id: user.id,
+      name: user.name,
+      username: user.username,
+      email: user.email,
+      role: user.role
+    }));
+
     navigate('/dashboard');
   };
 
