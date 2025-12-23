@@ -108,10 +108,11 @@ const Signup = () => {
               >
                 Sign up
               </button>
-            </div>
-          </form>
+          </div>
+        </form>
         </div>
       </div>
+    </div>
   );
 };
 
