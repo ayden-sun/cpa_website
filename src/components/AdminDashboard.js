@@ -49,57 +49,206 @@ const AdminDashboard = () => {
           <p className="text-red-600 font-semibold">Role: {user.role}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        {/* Statistics Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-semibold mb-4 text-blue-600">Users</h3>
-            <p className="text-3xl font-bold text-blue-600">4</p>
-            <p className="text-gray-600">Total registered users</p>
+            <h3 className="text-lg font-semibold mb-2 text-blue-600">Users</h3>
+            <p className="text-2xl font-bold text-blue-600">4</p>
+            <p className="text-sm text-gray-600">Total registered</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-semibold mb-4 text-green-600">Webinars</h3>
-            <p className="text-3xl font-bold text-green-600">3</p>
-            <p className="text-gray-600">Active webinars</p>
+            <h3 className="text-lg font-semibold mb-2 text-green-600">Webinars</h3>
+            <p className="text-2xl font-bold text-green-600">5</p>
+            <p className="text-sm text-gray-600">Total scheduled</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-semibold mb-4 text-purple-600">Payments</h3>
-            <p className="text-3xl font-bold text-purple-600">$200</p>
-            <p className="text-gray-600">Total revenue</p>
+            <h3 className="text-lg font-semibold mb-2 text-purple-600">Registrations</h3>
+            <p className="text-2xl font-bold text-purple-600">23</p>
+            <p className="text-sm text-gray-600">Total sign-ups</p>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h3 className="text-lg font-semibold mb-2 text-orange-600">Revenue</h3>
+            <p className="text-2xl font-bold text-orange-600">$575</p>
+            <p className="text-sm text-gray-600">This month</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-semibold mb-4">Manage Users</h3>
-            <p className="text-gray-600">View and manage all user accounts.</p>
-            <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-              Manage Users
+        {/* Webinar Management Table */}
+        <div className="bg-white rounded-lg shadow-md">
+          <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+            <h3 className="text-xl font-semibold">Webinar Management</h3>
+            <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-sm font-medium">
+              + Add New Webinar
             </button>
           </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-semibold mb-4">Manage Webinars</h3>
-            <p className="text-gray-600">Create and edit webinar schedules.</p>
-            <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-              Manage Webinars
-            </button>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-semibold mb-4">View Payments</h3>
-            <p className="text-gray-600">Monitor payment transactions.</p>
-            <button className="mt-4 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
-              View Payments
-            </button>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-semibold mb-4">System Analytics</h3>
-            <p className="text-gray-600">View detailed analytics and reports.</p>
-            <button className="mt-4 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
-              View Analytics
-            </button>
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Title
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Date
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Time
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Duration
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Registrations
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Status
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                <tr className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    Introduction to CPA
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    Jan 15, 2025
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    2:00 PM EST
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    2 hours
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    8/10
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                      Active
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                    <button className="text-blue-600 hover:text-blue-900">Edit</button>
+                    <button className="text-red-600 hover:text-red-900">Delete</button>
+                    <button className="text-gray-600 hover:text-gray-900">View</button>
+                  </td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    Advanced Tax Strategies
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    Feb 10, 2025
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    3:00 PM EST
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    2.5 hours
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    6/10
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                      Active
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                    <button className="text-blue-600 hover:text-blue-900">Edit</button>
+                    <button className="text-red-600 hover:text-red-900">Delete</button>
+                    <button className="text-gray-600 hover:text-gray-900">View</button>
+                  </td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    Financial Planning Basics
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    Mar 5, 2025
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    1:00 PM EST
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    2 hours
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    4/15
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                      Upcoming
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                    <button className="text-blue-600 hover:text-blue-900">Edit</button>
+                    <button className="text-red-600 hover:text-red-900">Delete</button>
+                    <button className="text-gray-600 hover:text-gray-900">View</button>
+                  </td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    Ethics in Accounting
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    Apr 12, 2025
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    10:00 AM EST
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    1.5 hours
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    0/12
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">
+                      Draft
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                    <button className="text-blue-600 hover:text-blue-900">Edit</button>
+                    <button className="text-red-600 hover:text-red-900">Delete</button>
+                    <button className="text-gray-600 hover:text-gray-900">Publish</button>
+                  </td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    Audit Procedures
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    May 8, 2025
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    9:00 AM EST
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    3 hours
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    5/8
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                      Active
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                    <button className="text-blue-600 hover:text-blue-900">Edit</button>
+                    <button className="text-red-600 hover:text-red-900">Delete</button>
+                    <button className="text-gray-600 hover:text-gray-900">View</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
