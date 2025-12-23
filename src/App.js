@@ -11,11 +11,13 @@ import Login from './components/Login';
 import Register from './components/Signup';
 import Dashboard from './components/Dashboard';
 import AdminDashboard from './components/AdminDashboard';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={
             <>
