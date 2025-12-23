@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from './Header';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +23,6 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <Header />
       <div className="bg-slate-800 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-4">Contact Us</h1>
