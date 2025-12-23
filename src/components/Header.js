@@ -1,7 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
+  const location = useLocation();
+
+  const scrollToSchedules = (e) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      // Already on homepage, scroll to schedules section
+      const schedulesSection = document.getElementById('schedules');
+      if (schedulesSection) {
+        schedulesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to homepage and then scroll
+      window.location.href = '/#schedules';
+    }
+  };
+
   return (
     <header className="bg-white shadow-lg border-b border-slate-300">
       <div className="container mx-auto px-4 py-4">
@@ -13,9 +29,13 @@ const Header = () => {
             <Link to="/#home" className="text-slate-700 hover:text-teal-600 transition-colors font-medium">
               Home
             </Link>
-            <Link to="/#schedules" className="text-slate-700 hover:text-teal-600 transition-colors font-medium">
+            <a
+              href="#schedules"
+              onClick={scrollToSchedules}
+              className="text-slate-700 hover:text-teal-600 transition-colors font-medium cursor-pointer"
+            >
               Schedules
-            </Link>
+            </a>
             <Link to="/about" className="text-slate-700 hover:text-teal-600 transition-colors font-medium">
               About
             </Link>
