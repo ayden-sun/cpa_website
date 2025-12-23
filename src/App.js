@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Schedules from './components/Schedules';
 import About from './components/About';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import Legal from './components/Legal';
 import Login from './components/Login';
 import Register from './components/Signup';
@@ -20,11 +21,7 @@ function App() {
               <Home />
               <Schedules />
 
-              <footer className="bg-gray-800 text-white py-8">
-                <div className="container mx-auto px-4 text-center">
-                  <p>&copy; 2025 CPA Webinar Platform. All rights reserved.</p>
-                </div>
-              </footer>
+              <Footer />
             </>
           } />
           <Route path="/about" element={<About />} />
