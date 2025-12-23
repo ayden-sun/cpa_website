@@ -5,6 +5,7 @@ import Schedules from './components/Schedules';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Header from './components/Header';
 import Legal from './components/Legal';
 import Login from './components/Login';
 import Register from './components/Signup';
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
+              <Header />
               <Home />
               <Schedules />
 

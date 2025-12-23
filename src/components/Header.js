@@ -22,9 +22,6 @@ const Header = () => {
             <Link to="/contact" className="text-slate-700 hover:text-teal-600 transition-colors font-medium">
               Contact
             </Link>
-            <Link to="/legal" className="text-slate-700 hover:text-teal-600 transition-colors font-medium">
-              Legal
-            </Link>
           </nav>
           <div className="flex space-x-4">
             <Link to="/login" className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 transition-colors font-medium">
